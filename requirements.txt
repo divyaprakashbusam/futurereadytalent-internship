@@ -5,5 +5,5 @@ mysqlclient==2.1.0
 pyodbc==4.0.32
 pytz==2021.3
 six==1.16.0
-sqlparse==0.4.2\
-whitenoise
+sqlparse==0.4.2
+whitenoise\
