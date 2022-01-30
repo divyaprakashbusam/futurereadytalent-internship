@@ -6,8 +6,5 @@ pyodbc==4.0.32
 pytz==2021.3
 six==1.16.0
 sqlparse==0.4.2
-<<<<<<< HEAD
 whitenoise\
-=======
-whitenoise\
->>>>>>> e438de986f05df664dc282850a399c920203a816
+

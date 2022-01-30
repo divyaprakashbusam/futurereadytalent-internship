@@ -12,12 +12,13 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import textwrap
-
+import socket
+import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
-STATIC_DIR = os.path.join(BASE_DIR,"static")
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,12 +28,14 @@ STATIC_DIR = os.path.join(BASE_DIR,"static")
 SECRET_KEY = 'django-insecure-n1bz&&e@$+-j-j%k*beuc4l%@h9gqx1gnt8ihu^5_7-67#7r8z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
+
+DEBUG = True
 ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['wellbeingg.azurewebsites.net']
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
 
-
-# Application definition
+# Application definitions
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -128,17 +131,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
+
 MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-STATICFILES_DIRS = [
-    STATIC_DIR,
-]
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = BASE_DIR / 'static'
-MEDIA_ROOT =os.path.join(BASE_DIR, 'static')
+
+MEDIA_ROOT =os.path.join(BASE_DIR, 'static/img')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
